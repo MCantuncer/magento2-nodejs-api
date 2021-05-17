@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd src && ts-node index.ts"
+    "start": "cd src && ts-node index.ts",
+    "server": "ts-node server.ts",
+    "cluster": "ts-node cluster.ts"
   },
   "keywords": [],
   "author": "",
