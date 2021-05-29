@@ -17,7 +17,7 @@ export class MagentoClient {
     this.authorization = `Bearer ${config.magento.accessToken}`;
 
     this.axios = axios.create({
-      baseURL: config.magento.apiUrl,
+      baseURL: process.env.BASE_API_URL,
       timeout: 15000,
     });
 
