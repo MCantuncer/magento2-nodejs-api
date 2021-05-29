@@ -1,5 +1,8 @@
 import * as http from 'http';
 import { MagentoManager } from './src/magento/manager';
+import { getProductFromElastic } from './elastic/elastic';
+import { checkErrorForCustomerInput, ErrorResponse } from './src/globals/error';
+import * as bodyParser from 'body-parser';
 
 const express = require('express');
 require('dotenv').config();
@@ -18,6 +21,19 @@ const pid = process.pid;
 const app = express();
 
 app.use(middleware.handle(i18next));
+app.use(bodyParser.json());
+
+app.get(`${process.env.BASE_ENDPOINT}/products`, async (req: any, res: any) => {
+  if (!req.query.q) res.json({ success: false, errors: { q: 'Must include q on query params' } } as ErrorResponse);
+  else res.json(await getProductFromElastic(req.query.q, req.query.limit, req.query.offset));
+});
+
+app.post(`${process.env.BASE_ENDPOINT}/customers`, async (req: any, res: any) => {
+  const errors = checkErrorForCustomerInput(req);
+
+  if (errors.errors.length > 0) res.json(errors);
+  else res.json(await MagentoManager.createCustomer(req.body, req));
+});
 
 app.get(`${process.env.BASE_ENDPOINT}/countries`, async (req: any, res: any) => {
   res.json(await MagentoManager.getCountries(req));

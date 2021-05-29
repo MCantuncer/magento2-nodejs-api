@@ -1,20 +1,26 @@
 {
-  "name": "nodejs-basic-boilerplate",
+  "name": "leanscale-case-study",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd src && ts-node index.ts",
     "dev": "nodemon server.ts",
-    "cluster": "ts-node cluster.ts"
+    "cluster": "ts-node cluster.ts",
+    "update-elastic": "cd jobs && ts-node update-elasticsearch.ts",
+    "import-customers": "cd jobs && ts-node import-customers.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@elastic/elasticsearch": "^7.12.0",
     "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "csv-parser": "^3.0.0",
+    "csv-reader": "^1.0.8",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "fast-json-stringify": "^2.7.6",
     "i18next": "^20.3.1",
     "i18next-fs-backend": "^1.1.1",
     "i18next-http-middleware": "^3.1.3",

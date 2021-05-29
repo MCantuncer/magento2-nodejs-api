@@ -249,6 +249,14 @@
   "Zambia":  "Zambiya",
   "Zimbabwe":  "Zimbabve",
 
+  "Email is required": "Email zorunlu alan",
+  "Firstname is required": "İsim zorunlu alan",
+  "Lastname is required": "Soyisim zorunlu alan",
+  "Password is required": "Şifre zorunlu alan",
+  "Email is not valid": "Geçersiz email adresi",
+  "A customer with the same email address already exists in an associated website.": "Aynı email adresi ile kayitli bir kullanıcı mevcut.",
+  "Minimum of different classes of characters in password is %1. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.": "Daha güçlü bir şifre kullanınız.",
+
   "Default Category": "Varsayılan Kategori",
   "What's New": "Yeni Olanlar",
   "Women": "Kadınlar"
