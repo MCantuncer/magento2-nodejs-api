@@ -20,4 +20,11 @@ export class MagentoCountry {
     this.threeLetterAbbreviation = three_letter_abbreviation;
     this.fullNameEnglish = full_name_english;
   }
+
+  toRequestData = (req?: any) => {
+    return {
+      id: this.id,
+      name: req ? req.t(this.fullNameEnglish) : this.fullNameEnglish,
+    };
+  };
 }

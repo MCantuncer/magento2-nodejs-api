@@ -15,14 +15,16 @@ i18next
   .init({ fallbackLng: 'en', backend: { loadPath: './lang/{{lng}}.json' } });
 
 const pid = process.pid;
-
 const app = express();
 
 app.use(middleware.handle(i18next));
 
 app.get(`${process.env.BASE_ENDPOINT}/countries`, async (req: any, res: any) => {
-  const countries = await MagentoManager.getCountries(req);
-  res.json(countries);
+  res.json(await MagentoManager.getCountries(req));
+});
+
+app.get(`${process.env.BASE_ENDPOINT}/categories`, async (req: any, res: any) => {
+  res.json(await MagentoManager.getCategories(req));
 });
 
 http.createServer(app).listen(process.env.PORT, async () => {

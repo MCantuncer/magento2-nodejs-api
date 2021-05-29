@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { config } from '../globals/config';
 import { MagentoCountry } from './models/country';
+import { MagentoCategory } from './models/category';
 
 enum ResponseStatus {
   SUCCESS = 200,
@@ -30,6 +31,15 @@ export class MagentoClient {
       const response = await this.axios.get('directory/countries');
       if (response.status == ResponseStatus.SUCCESS)
         return response.data.map((country: any) => new MagentoCountry(country));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  getCategories = async (req?: any) => {
+    try {
+      const response = await this.axios.get('categories');
+      if (response.status == ResponseStatus.SUCCESS) return new MagentoCategory(response.data);
     } catch (err) {
       console.error(err);
     }
